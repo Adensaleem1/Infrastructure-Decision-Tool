@@ -46,3 +46,27 @@ NOTES
 - This program checks CIDR prefix compatibility, not specific network address containment, because the assignment requests CIDR prefixes rather than full network addresses.
 - AWS reserves five IP addresses in each subnet. For /30 (four total IPs), usable addresses are reported as zero, not a negative number.
 - Enter CIDR prefixes as numbers without the slash. The program displays the slash in each prompt.
+ADDITIONAL TESTING NOTES
+
+I tested the program with different inputs to make sure
+both tools were working correctly.
+
+Test 1: Sufficient Subnet
+VPC CIDR: /16
+Subnet CIDR: /24
+Devices: 200
+Result: 251 usable IPs and 51 unused IPs.
+
+Test 2: Insufficient Subnet
+VPC CIDR: /16
+Subnet CIDR: /28
+Devices: 20
+Result: 11 usable IPs and 9 additional IPs needed.
+
+Test 3: Compute Environment
+Application: VCU Student Portal
+Monthly users: 15000
+Monthly budget: $2000
+High availability: Yes
+Result: EC2 + Load Balancer + Auto Scaling.
+The program correctly displayed a budget warning.
